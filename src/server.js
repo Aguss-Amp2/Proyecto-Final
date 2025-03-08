@@ -5,9 +5,9 @@ import mongoose from "./config/mongoDB.config.js"
 import { authMiddleware } from "./middlewares/authMiddleware.js"
 import workspace_router from "./routes/workspace.router.js"
 import channelRouter from "./routes/channel.route.js"
-import cors from 'cors'
+import cors from 'cors';
 
-const app = express()
+const app = express();
 
 app.use(cors())
 app.use(express.json())
