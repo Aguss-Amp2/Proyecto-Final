@@ -9,7 +9,7 @@ import channelRouter from "./routes/channel.route.js"
 
 const app = express()
 
-app.use(cors("http://dominio-vercel.app"))
+app.use(cors("https://proyecto-final-sooty-seven.vercel.app"))
 app.use(express.json())
 app.use('/api/auth', authRoute)
 app.use('/api/workspaces', workspace_router)
