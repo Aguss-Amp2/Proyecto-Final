@@ -8,6 +8,7 @@ import workspace_router from "./routes/workspace.router.js"
 import channelRouter from "./routes/channel.route.js"
 
 const app = express()
+const cors = require('cors');
 
 app.use(cors())
 app.use(express.json())
