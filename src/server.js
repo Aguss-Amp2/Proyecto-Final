@@ -7,9 +7,9 @@ import workspace_router from "./routes/workspace.router.js"
 import channelRouter from "./routes/channel.route.js"
 import cors from 'cors'
 
-const app = express();
+const app = express()
 
-app.use(cors()); 
+app.use(cors())
 app.use(express.json())
 app.use('/api/auth', authRoute)
 app.use('/api/workspaces', workspace_router)
