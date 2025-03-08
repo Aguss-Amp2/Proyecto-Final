@@ -2,7 +2,7 @@ import ENVIROMENT from "./config/enviroment.config.js"
 import express from 'express'
 import authRoute from "./routes/authRoute.js"
 import mongoose from "./config/mongoDB.config.js"
-import cors from "cors"
+import cors from 'cors'
 import { authMiddleware } from "./middlewares/authMiddleware.js"
 import workspace_router from "./routes/workspace.router.js"
 import channelRouter from "./routes/channel.route.js"
