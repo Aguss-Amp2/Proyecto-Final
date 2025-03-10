@@ -9,7 +9,7 @@ import channelRouter from "./routes/channel.route.js"
 
 const app = express()
 
-app.use(cors())
+app.use(cors(origin= ENVIROMENT.URL_FRONTEND))
 app.use(express.json())
 app.use('/api/auth', authRoute)
 app.use('/api/workspaces', workspace_router)
