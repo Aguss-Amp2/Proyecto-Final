@@ -1,7 +1,7 @@
 import ENVIROMENT from "./config/enviroment.config.js"
 import express from 'express'
 import authRoute from "./routes/authRoute.js"
-import mongoose from "./config/mongoDB.config.js"
+import connectToMongoDB from "./config/mongoDB.config.js"
 import cors from 'cors'
 import { authMiddleware } from "./middlewares/authMiddleware.js"
 import workspace_router from "./routes/workspace.router.js"
@@ -11,6 +11,7 @@ const app = express()
 
 //Deshabilito la politica de cors
 //Si quieren un backend publico
+connectToMongoDB()
 app.use(cors())
 
 /* Si no quieren un backend publico
