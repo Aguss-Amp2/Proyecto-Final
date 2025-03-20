@@ -2,15 +2,26 @@ import ENVIROMENT from "./config/enviroment.config.js"
 import express from 'express'
 import authRoute from "./routes/authRoute.js"
 import mongoose from "./config/mongoDB.config.js"
-import cors from 'cors';
+import cors from 'cors'
 import { authMiddleware } from "./middlewares/authMiddleware.js"
 import workspace_router from "./routes/workspace.router.js"
 import channelRouter from "./routes/channel.route.js"
 
 const app = express()
 
-app.use(cors(ENVIROMENT.URL_FRONTEND))
+//Deshabilito la politica de cors
+//Si quieren un backend publico
+app.use(cors())
+
+/* Si no quieren un backend publico
+app.use(cors(
+    {
+        origin: ENVIROMENT.URL_FRONTEND
+    }
+))*/
+
 app.use(express.json())
+
 app.use('/api/auth', authRoute)
 app.use('/api/workspaces', workspace_router)
 app.use('/api/channels', channelRouter)

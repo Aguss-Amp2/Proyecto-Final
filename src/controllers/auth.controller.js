@@ -19,15 +19,24 @@ const registerUsers = async(req, res) => {
         if(!password){
             throw new ServerError('Password is required', 400)
         }
+
+        //Encriptar contraseña
         const passwordHash = await bcrypt.hash(password, 10)
 
+        // JSON WEB TOKEN que es un JSON pasado a string '{"nombre": "pepe"}' --> 'sddssd.dsds.dsds'
+
         const verification_token = jwt.sign(
-            {email},
-            ENVIROMENT.SECRET_KEY_JWT,
-            {expiresIn: '24h'}
+            {email}, //Lo que queremos guardar en el token
+            ENVIROMENT.SECRET_KEY_JWT, // Clave con la que vamos a firmar
+            {expiresIn: '24h'} // Fecha de expiracion del token
         )
 
         await UserRepository.create({username, email, password: passwordHash, verification_token: verification_token})
+        /*
+            Le vamos a mandar un mail al usuario
+            El mail va a tener un link
+            <a href="http://localhost:3000/api/auth/verifyEmail?verification_token">Click para Verificar</a>
+        */
 
         await sendMail({
             to: email,
@@ -196,6 +205,7 @@ export const rewritePasswordController = async(req ,res) => {
         const { password, reset_token } = req.body
         const { _id } = jwt.verify(reset_token, ENVIROMENT.SECRET_KEY_JWT)
 
+        // Hashear la pwd
         const newHashedPassword = await bcrypt.hash(password, 10)
         await UserRepository.changeUserPassword(_id, newHashedPassword)
         
