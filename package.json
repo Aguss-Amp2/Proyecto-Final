@@ -2,7 +2,7 @@
   "name": "clase-18-node",
   "version": "1.0.0",
   "description": "",
-  "main": "./sre/server.js",
+  "main": "./src/server.js",
   "type": "module",
   "scripts": {
     "start": "node server.js",
