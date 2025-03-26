@@ -8,7 +8,17 @@ import workspace_router from "./routes/workspace.router.js"
 import channelRouter from "./routes/channel.route.js"
 
 const app = express()
+
+//Deshabilito la politica de cors
+//Si quieren un backend publico
 app.use(cors())
+
+/* Si no quieren un backend publico
+app.use(cors(
+    {
+        origin: ENVIROMENT.URL_FRONTEND
+    }
+))*/
 
 app.use(express.json())
 
