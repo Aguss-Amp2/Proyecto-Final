@@ -9,8 +9,8 @@ const ENVIROMENT = {
     SECRET_KEY_JWT: process.env.SECRET_KEY_JWT,
     GMAIL_USERNAME: process.env.GMAIL_USERNAME,
     GMAIL_PASSWORD: process.env.GMAIL_PASSWORD,
-    URL_BACKEND: process.env.URL_BACKEND,
-    URL_FRONTEND: process.env.URL_FRONTEND,
+    URL_BACKEND: process.env.URL_BACKEND || 'https://proyecto-final-sooty-seven.vercel.app',
+    URL_FRONTEND: process.env.URL_FRONTEND || 'https://proyecto-final-front-rouge.vercel.app',
     MYSQL: {
         DB_NAME: process.env.MY_SQL_DATABASE,
         USERNAME: process.env.MY_SQL_USER,
