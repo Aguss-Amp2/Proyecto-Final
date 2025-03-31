@@ -159,7 +159,6 @@ export const resetPasswordController = async(req ,res) => {
             throw new ServerError('User email is not Verified', 400)
         }
         const reset_token = jwt.sign({email, _id: user_found._id}, ENVIROMENT.SECRET_KEY_JWT, {expiresIn: '2h'})
-        console.log('Reset Link:', `http://localhost:5173/rewrite-password?reset_token=${reset_token}`)
 
         await sendMail({
             to: email,
