@@ -38,7 +38,7 @@ const registerUsers = async(req, res) => {
             html:`
                 <h1>Valida tu mail entra en nuestra pagina</h1>
                 <p>Esta validacion es para asegurarnos que tu mails realmente tuyo, sino te has registrado en (nombre de la empresa) estonces ignora este mail</p>
-                <a href='${ENVIROMENT.URL_FRONTEND}/api/auth/verify-email?verification_token=${verification_token}'>Verificar cuenta</a>
+                <a href='${ENVIROMENT.URL_BACKEND}/api/auth/verify-email?verification_token=${verification_token}'>Verificar cuenta</a>
             `
         })
         
