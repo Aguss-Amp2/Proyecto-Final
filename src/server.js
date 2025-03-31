@@ -7,7 +7,11 @@ import workspace_router from "./routes/workspace.router.js"
 import channelRouter from "./routes/channel.route.js"
 
 const app = express()
-app.use(cors())
+app.use(cors({
+    origin: [`${ENVIROMENT.URL_FRONTEND}`],
+    methods: ['GET', 'POST', 'PUT'],
+    credentials: true
+}))
 
 app.use(express.json())
 
