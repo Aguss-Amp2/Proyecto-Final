@@ -32,19 +32,13 @@ const registerUsers = async(req, res) => {
         )
 
         await UserRepository.create({username, email, password: passwordHash, verification_token: verification_token})
-        /*
-            Le vamos a mandar un mail al usuario
-            El mail va a tener un link
-            <a href="http://localhost:3000/api/auth/verifyEmail?verification_token">Click para Verificar</a>
-        */
-
         await sendMail({
             to: email,
             subject: 'Valida tu mail',
             html:`
                 <h1>Valida tu mail entra en nuestra pagina</h1>
-                <p>Esta validacion es para asegurarnos que tu mailes realmente tuyo, sino te has registrado en (nombre de la empresa) estonces ignora este mail</p>
-                <a href='${ENVIROMENT.URL_BACKEND}/api/auth/verify-email?verification_token=${verification_token}'>Verificar cuenta</a>
+                <p>Esta validacion es para asegurarnos que tu mails realmente tuyo, sino te has registrado en (nombre de la empresa) estonces ignora este mail</p>
+                <a href='${ENVIROMENT.URL_FRONTEND}/api/auth/verify-email?verification_token=${verification_token}'>Verificar cuenta</a>
             `
         })
         
