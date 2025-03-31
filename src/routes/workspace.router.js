@@ -10,8 +10,6 @@ workspace_router.get('/:email',authMiddleware, getUserIdByEmail)
 workspace_router.get('/:workspace_id/channel', authMiddleware, getWorkspaceName)
 workspace_router.get('/:workspace_id/members', authMiddleware, getWorkspaceMembers)
 workspace_router.get('/:email/profile', authMiddleware, getProfile)
-
-// /api/workspace/invite/:invited_id
 workspace_router.post('/:workspace_id/invite/:invited_id', authMiddleware, inviteUserWorkspaceController)
 
 export default workspace_router
