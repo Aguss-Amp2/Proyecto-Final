@@ -165,7 +165,7 @@ export const resetPasswordController = async(req ,res) => {
             subject:'Reset your Password',
             html:`
                 <h1>Has Reseteado tu contraseña de no ser tu ignora este mail</h1>
-                <a href='https://proyecto-final-front-rouge.vercel.app/rewrite-password?reset_token=${reset_token}'>Click aqui para Resetear</a>
+                <a href='${ENVIROMENT.URL_FRONTEND}/rewrite-password?reset_token=${reset_token}'>Click aqui para Resetear</a>
                 `
         })
         return res.json({
@@ -199,7 +199,6 @@ export const rewritePasswordController = async(req ,res) => {
         if (!reset_token || !password) {
             throw new ServerError('Datos incompletos', 400);
         }
-        console.log("Token recibido en el backend:", reset_token);
         const decoded = jwt.verify(reset_token, ENVIROMENT.SECRET_KEY_JWT);
         const { email } = decoded;
         // Lógica de actualización de contraseña aquí...
