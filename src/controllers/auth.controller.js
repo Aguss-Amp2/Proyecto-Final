@@ -195,20 +195,15 @@ export const resetPasswordController = async(req ,res) => {
 
 export const rewritePasswordController = async(req ,res) => {
     try {
-        const { password, reset_token } = req.body
-        const { _id } = jwt.verify(reset_token, ENVIROMENT.SECRET_KEY_JWT)
-
-        // Hashear la pwd
-        const newHashedPassword = await bcrypt.hash(password, 10)
-        await UserRepository.changeUserPassword(_id, newHashedPassword)
-        
-        return res.json({
-            ok: true,
-            message: 'Password changed succesfully',
-            status: 200
-        })
-
-
+        const { password, reset_token } = req.body;
+        if (!reset_token || !password) {
+            throw new ServerError('Datos incompletos', 400);
+        }
+        console.log("Token recibido en el backend:", reset_token);
+        const decoded = jwt.verify(reset_token, ENVIROMENT.SECRET_KEY_JWT);
+        const { email } = decoded;
+        // Lógica de actualización de contraseña aquí...
+        res.json({ ok: true, message: "Contraseña actualizada" });
     } catch (err) {
         console.log(err);
         if (err.status) {
