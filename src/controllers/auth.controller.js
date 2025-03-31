@@ -73,7 +73,7 @@ export const verifyEmailController = async(req, res) =>{
         const payload = jwt.verify(verification_token, ENVIROMENT.SECRET_KEY_JWT)
         const {email} = payload
         const user_found = await UserRepository.verifyUserByEmail(email)
-        res.redirect(ENVIROMENT.URL_FRONTEND + '/login')
+        res.redirect(ENVIROMENT.URL_FRONTEND)
     }
     catch(error){
         console.log('Error al Verificar: ', error)
