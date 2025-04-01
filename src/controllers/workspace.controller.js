@@ -115,7 +115,7 @@ export const getWorkspacesController = async (req, res) => {
             data: workspaces
         });
     } catch (error) {
-        console.log('Error fetching workspaces:', error);
+        console.log('Error fetching workspaces:', error)
 
         return res.status(500).json({
             ok: false,
@@ -176,13 +176,11 @@ export const getWorkspaceMembers = async (req, res) => {
 }
 
 export const getProfile = async (req, res) => {
-    const email = req.params.email; // Obtener el email desde la URL
-
-    console.log('Email from Params:', email); // Debug
+    const email = req.params.email
 
     try {
         // Buscar al usuario en la base de datos usando el email
-        const user = await User.findOne({ email });
+        const user = await User.findOne({ email })
 
         if (!user) {
             console.log('Usuario no encontrado en la base de datos');

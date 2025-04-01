@@ -6,8 +6,6 @@ export const authMiddleware = (request, response, next) => {
     try{
 
         const authorization_header = request.headers['authorization']
-        console.log('Request User:', request.user)
-        console.log('Request Headers:', request.headers)
         if(!authorization_header){
             throw new ServerError('No se Proporciono el Header de Autorizacion', 401)
         }
@@ -18,7 +16,6 @@ export const authMiddleware = (request, response, next) => {
         }
         try{
             const user_info = jwt.verify(authorization_token, ENVIROMENT.SECRET_KEY_JWT)
-            console.log('user_info', user_info)
             if (!user_info || !user_info.id) {
                 throw new ServerError('Token inválido', 401);
             }

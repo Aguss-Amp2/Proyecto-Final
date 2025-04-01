@@ -210,7 +210,7 @@ export const rewritePasswordController = async(req ,res) => {
 
 
     } catch (err) {
-        console.log(err);
+        console.log(err)
         if (err.status) {
             return res.send({
                 ok: false,

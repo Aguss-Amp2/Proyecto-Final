@@ -92,7 +92,7 @@ export const getMessagesListFromChannelController = async (req, res) =>{
 
     }
     catch(error){
-        console.log("error al obtener la lista de mensajes", error);
+        console.log("error al obtener la lista de mensajes", error)
 
         if (error.status) {
             return res.status(400).send({
@@ -144,7 +144,7 @@ export const getChannelController = async (req, res) => {
             data: channel
         });
     } catch (error) {
-        console.log('Error fetching workspaces:', error);
+        console.log('Error fetching workspaces:', error)
 
         return res.status(500).json({
             ok: false,
